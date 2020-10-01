@@ -16,12 +16,13 @@
 #
 
 # Dockerfile for python AI actions, overrides and extends ActionRunner from actionProxy
-FROM tensorflow/tensorflow:1.11.0-py3
+# FROM tensorflow/tensorflow:1.11.0-py3
+FROM tensorflow/tensorflow:2.3.1-gpu
 
 ENV FLASK_PROXY_PORT 8080
 ENV PYTHONIOENCODING "UTF-8"
 
-RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+RUN apt-get update && apt-get install -y \
         gcc \
         libc-dev \
         libxslt-dev \
@@ -36,8 +37,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 RUN apt-cache search linux-headers-generic
 
 # PyTorch
-RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp35-cp35m-linux_x86_64.whl \
-    && pip3 install torchvision==0.2.1
+# RUN pip3 install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp35-cp35m-linux_x86_64.whl \
+#     && pip3 install torchvision==0.2.1
 # Caffe
 # RUN apt-get update && apt-get upgrade -y \
 #     && apt-get install -y \
